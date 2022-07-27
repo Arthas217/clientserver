@@ -15,7 +15,6 @@ import java.util.Map;
 @RestController
 public class ClientServerController {
 
-
     // 一、 @RequestMapping 支持get
     //  required = true 默认
     //  1、不传参数token
@@ -63,7 +62,7 @@ public class ClientServerController {
     @RequestMapping("/m3")
     @ResponseBody
     public JSONObject method3(@RequestBody JSONObject token) {
-       return token;
+        return token;
     }
 
     //HttpServletRequest方式
@@ -72,7 +71,7 @@ public class ClientServerController {
     // postman请求   请求body {"requestMethod":"GET"}
 
     // 2、post请求
-    // postman请求   请求body {"requestMethod":"GET"}
+    // postman请求   请求body {"requestMethod":"POST"}
 
     @RequestMapping("/m4")
     @ResponseBody
@@ -82,6 +81,5 @@ public class ClientServerController {
         map.put("requestMethod", method);
         return map;
     }
-
 
 }
