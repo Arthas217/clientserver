@@ -3,6 +3,10 @@ package com.example.clientserver.controller;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author 会游泳的蚂蚁
  * @Description:
@@ -53,7 +57,8 @@ public class ClientServerController {
     }
 
 
-    // 三、 @ResponseBody
+    // 三、 @ResponseBody  结果Response对象的body数据区
+    // 当你不加上@ResponseBody，返回到页面的是String类型的数据。加上这个注解，获取到的就是json格式的
 
     @RequestMapping("/m3")
     @ResponseBody
@@ -61,7 +66,22 @@ public class ClientServerController {
        return token;
     }
 
+    //HttpServletRequest方式
+    // 1、get请求
+    // 浏览器请求  http://localhost:8080/m4   返回结果 {"requestMethod":"GET"}
+    // postman请求   请求body {"requestMethod":"GET"}
 
+    // 2、post请求
+    // postman请求   请求body {"requestMethod":"GET"}
+
+    @RequestMapping("/m4")
+    @ResponseBody
+    public Map<String, Object> method4(HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<>(1);
+        String method = request.getMethod();
+        map.put("requestMethod", method);
+        return map;
+    }
 
 
 }
